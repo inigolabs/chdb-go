@@ -34,6 +34,11 @@ func QueryStream(queryStr string, outputFormats ...string) (result chdbpurego.Ch
 	return tempSession.QueryStreaming(queryStr, outputFormat)
 }
 
+// Initialize allows initializing libchdb at runtime
+func Initialize(path string) {
+	chdbpurego.Initialize(path)
+}
+
 func initConnection(connStr string) (result chdbpurego.ChdbConn, err error) {
 	return chdbpurego.NewConnectionFromConnString(connStr)
 }

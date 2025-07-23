@@ -49,8 +49,10 @@ var (
 	streamingResultCancel  func(conn *chdb_conn, result *chdb_streaming_result)
 )
 
-func init() {
-	path := findLibrary()
+func Initialize(path string) {
+	if path == "" {
+		path = findLibrary()
+	}
 	libchdb, err := purego.Dlopen(path, purego.RTLD_NOW|purego.RTLD_GLOBAL)
 	if err != nil {
 		panic(err)
